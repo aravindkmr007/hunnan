@@ -8,77 +8,55 @@ function StepsZilla() {
     
   }
   );
-  const Pages = [
+   let Data = [
     {
       name: "Product Rating",
-      component: (
-        <CustomerSurvey
-          intialState={intialState}
-          setintialState={setintialState}
-          question={"How satisfied are you with our products?"}
-          rating={5}
-          textbox={false}
-          name="ProductRating"
-          
-        />
-      ),
+      question: "How satisfied are you with our products?",
+      maxrating: 5,
+      textbox: false,
     },
     {
       name: "Price Comparsion to Retails",
-      component: (
-        <CustomerSurvey
-          question={"How fair are the prices compared to similar retailers?"}
-          rating={5}
-          name="PriceCompareRating"
-          textbox={false}
-          intialState={intialState}
-          setintialState={setintialState}
-        />
-      ),
+      question: "How fair are the prices compared to similar retailers?",
+      maxrating: 5,
+      textbox: false,
     },
     {
       name: "Price Rating",
-      component: (
-        <CustomerSurvey
-          question={
-            "How satisfied are you with the value for money of your purchase?"
-          }
-          rating={5}
-          name="PriceRating"
-          textbox={false}
-          intialState={intialState}
-          setintialState={setintialState}
-        />
-      ),
+      question:
+        "How satisfied are you with the value for money of your purchase?",
+      maxrating: 5,
+      textbox: false,
     },
     {
-      name: "Recommandation ",
-      component: (
-        <CustomerSurvey
-          question={
-            "On a scale of 1-10 how would you recommend us to your friends and family?"
-          }
-          name="RecommandationRating"
-          rating={10}
-          textbox={false}
-          intialState={intialState}
-          setintialState={setintialState}
-        />
-      ),
+      name: "Recommandation",
+      question:
+        "On a scale of 1-10 how would you recommend us to your friends and family?",
+      maxrating: 10,
+      textbox: false,
     },
     {
-      name: "Feedback ",
-      component: (
-        <CustomerSurvey
-        intialState={intialState}
-        setintialState={setintialState}
-          question={"What could we do to improve our service?"}
-          name="Feedback"
-          textbox={true}
-        />
-      ),
+      name: "Feedback",
+      question: "What could we do to improve our service?",
+      maxrating : "",
+      textbox: true,
     },
   ];
+ const Pages = Data.map((e) => {
+    return {
+      name: e.name,
+      component: (
+        <CustomerSurvey
+          intialState={intialState}
+          setintialState={setintialState}
+          question={e.question}
+          rating={e.maxrating}
+          textbox={e.textbox}
+          name={e.name.trim()}
+        />
+      ),
+    };
+  });
   console.log(intialState);
   return (
     <div className="step-progress">
